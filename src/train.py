@@ -94,6 +94,11 @@ def preprocess(df):
     X_train = col_transf.fit_transform(X_train)
     X_test = col_transf.transform(X_test)
 
+    # Save column transformer for reuse in FastAPI
+    os.makedirs("models", exist_ok=True)
+    with open("models/column_transformer.pkl", "wb") as f:
+        pickle.dump(col_transf, f)
+
     return col_transf, X_train, X_test, y_train, y_test
 
 

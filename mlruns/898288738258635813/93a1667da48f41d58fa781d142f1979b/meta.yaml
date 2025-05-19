@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/898288738258635813/93a1667da48f41d58fa781d142f1979b/artifacts
+end_time: 1747672690791
+entry_point_name: ''
+experiment_id: '898288738258635813'
+lifecycle_stage: active
+run_id: 93a1667da48f41d58fa781d142f1979b
+run_name: XGBoost
+run_uuid: 93a1667da48f41d58fa781d142f1979b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747672686489
+status: 3
+tags: []
+user_id: Suhaila
