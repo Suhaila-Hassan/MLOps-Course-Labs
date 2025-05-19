@@ -24,7 +24,6 @@ Target column: Exited
 7. Docker support for deployment
 
 # Model Training (train.py)
-## Description
 train.py is responsible for:
 - Reading and preprocessing the dataset
 - Handling class imbalance through downsampling
@@ -46,7 +45,6 @@ train.py is responsible for:
 - MLflow logs (metrics, artifacts, model parameters)
 
 # API Inference (main.py)
-## Description
 main.py launches a RESTful API using FastAPI to serve the churn prediction model.
 ## Endpoints
 - GET /: Returns a welcome message
@@ -54,6 +52,5 @@ main.py launches a RESTful API using FastAPI to serve the churn prediction model
 - POST /predict: Accepts customer data and returns churn prediction
 
 # Docker Deployment
-## Dockerfile
 A Python-based Docker container is provided to run the FastAPI app.
 
