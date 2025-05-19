@@ -32,25 +32,25 @@ train.py is responsible for:
 - Evaluating models and logging metrics with MLflow
 - Saving trained models and transformers to disk
 
-## Key Functions
+### Key Functions
 - rebalance(data): Downsamples the majority class
 - preprocess(df): Prepares features and saves the column transformer
 - train(model_class, params, X_train, y_train): Trains a given model
 - evaluate(y_true, y_pred, model_name): Logs performance metrics and plots
 - run_experiment(...): Combines training, evaluation, and MLflow logging
 
-## Outputs
+### Outputs
 - Saved model files in models/
 - Confusion matrix plots in plots/
 - MLflow logs (metrics, artifacts, model parameters)
 
 # API Inference (main.py)
 main.py launches a RESTful API using FastAPI to serve the churn prediction model.
-## Endpoints
+### Endpoints
 - GET /: Returns a welcome message
 - GET /health: Health check endpoint
 - POST /predict: Accepts customer data and returns churn prediction
 
-# Docker Deployment
+# Docker Deployment (Dockerfile)
 A Python-based Docker container is provided to run the FastAPI app.
 
