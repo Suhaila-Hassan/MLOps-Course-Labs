@@ -30,7 +30,7 @@ jobs:
         pip install pytest
 
     - name: Run Unit Tests
-      run: pytest test_api.py  # update filename if different
+      run: pytest test_api.py
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
