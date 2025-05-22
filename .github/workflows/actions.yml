@@ -30,7 +30,7 @@ jobs:
         pip install pytest
 
     - name: Run Unit Tests
-      run: pytest test_api.py  # update this if your test file has a different name
+      run: pytest test_api.py  # update filename if different
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -55,8 +55,3 @@ jobs:
 
     - name: Output Docker Image URI
       run: echo "Docker image pushed: ${{ env.IMAGE_URI }}"
-
-
-    - name: Output image URI
-      run: echo "Docker image pushed: ${{ env.IMAGE_URI }}"
-
