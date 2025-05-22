@@ -8,7 +8,7 @@ on:
 env:
   ECR_REPO: churn-prediction
   IMAGE_TAG: suhaila245
-  AWS_REGION: us-east-1   # <-- Change to your actual AWS region if needed
+  AWS_REGION: us-east-1
 
 jobs:
   build-test-push:
@@ -30,8 +30,7 @@ jobs:
         pip install pytest
 
     - name: Run Unit Tests
-      run: |
-        pytest test_api.py   # <-- Make sure your test file is named correctly
+      run: pytest test_api.py  # update this if your test file has a different name
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -53,6 +52,10 @@ jobs:
     - name: Push Docker Image to ECR
       run: |
         docker push ${{ env.IMAGE_URI }}
+
+    - name: Output Docker Image URI
+      run: echo "Docker image pushed: ${{ env.IMAGE_URI }}"
+
 
     - name: Output image URI
       run: echo "Docker image pushed: ${{ env.IMAGE_URI }}"
