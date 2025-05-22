@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/898288738258635813/4b0bf22e47b74148aa7d4e7508cc6d82/artifacts
+end_time: 1747672682025
+entry_point_name: ''
+experiment_id: '898288738258635813'
+lifecycle_stage: active
+run_id: 4b0bf22e47b74148aa7d4e7508cc6d82
+run_name: LogisticRegression
+run_uuid: 4b0bf22e47b74148aa7d4e7508cc6d82
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747672676642
+status: 3
+tags: []
+user_id: Suhaila

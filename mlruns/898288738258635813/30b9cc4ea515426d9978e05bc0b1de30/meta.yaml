@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/898288738258635813/30b9cc4ea515426d9978e05bc0b1de30/artifacts
+end_time: 1747672686452
+entry_point_name: ''
+experiment_id: '898288738258635813'
+lifecycle_stage: active
+run_id: 30b9cc4ea515426d9978e05bc0b1de30
+run_name: RandomForest
+run_uuid: 30b9cc4ea515426d9978e05bc0b1de30
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747672682061
+status: 3
+tags: []
+user_id: Suhaila
