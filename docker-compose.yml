@@ -2,12 +2,12 @@ version: "3.9"
 
 services:
   fastapi:
-    build: ./app
+    build: . 
     container_name: fastapi_app
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app
+      - .:/app
     depends_on:
       - prometheus
 
