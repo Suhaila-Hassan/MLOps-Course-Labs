@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Set up Python (for test dependencies)
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
@@ -27,7 +27,7 @@ jobs:
       run: |
         docker build -t fastapi-churn-prediction:latest .
 
-    - name: Run container in background
+    - name: Run container
       run: |
         docker run -d --rm -p 8000:8000 --name test_container fastapi-churn-prediction:latest
         sleep 10
@@ -40,7 +40,7 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"CreditScore":650,"Geography":"France","Gender":"Female","Age":40,"Tenure":3,"Balance":60000.0,"NumOfProducts":2,"HasCrCard":1,"IsActiveMember":1,"EstimatedSalary":50000.0}'
 
-    - name: Run pytest tests
+    - name: Run tests
       run: |
         pytest test_api.py || echo "Tests failed"
 
