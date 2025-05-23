@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python (for test dependencies)
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10
+        python-version: 3.11
 
     - name: Install test dependencies
       run: |
@@ -46,4 +46,5 @@ jobs:
 
     - name: Stop container
       if: always()
-      run: docker stop test_container
+      run: docker stop test_container || true
+
