@@ -32,9 +32,13 @@ jobs:
         docker run -d --rm -p 8000:8000 --name test_container fastapi-churn-prediction:latest
         sleep 10
 
-    - name: Test API endpoint
+    - name: Test API endpoints
       run: |
+        curl -f http://localhost:8000/
         curl -f http://localhost:8000/health
+        curl -X POST http://localhost:8000/predict \
+          -H "Content-Type: application/json" \
+          -d '{"CreditScore":650,"Geography":"France","Gender":"Female","Age":40,"Tenure":3,"Balance":60000.0,"NumOfProducts":2,"HasCrCard":1,"IsActiveMember":1,"EstimatedSalary":50000.0}'
 
     - name: Run pytest tests
       run: |
@@ -43,4 +47,3 @@ jobs:
     - name: Stop container
       if: always()
       run: docker stop test_container
-
