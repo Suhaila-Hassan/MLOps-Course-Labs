@@ -36,7 +36,7 @@ jobs:
       run: |
         curl -f http://localhost:8000/health
 
-    - name: Run pytest tests (if any)
+    - name: Run pytest tests
       run: |
         pytest test_api.py || echo "Tests failed"
 
