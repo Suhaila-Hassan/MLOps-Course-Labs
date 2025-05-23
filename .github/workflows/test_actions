@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - cicd_actions
-  pull_request:
-    branches:
-      - cicd_actions
 
 jobs:
   test:
