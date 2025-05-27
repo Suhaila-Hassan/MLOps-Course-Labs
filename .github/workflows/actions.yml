@@ -1,4 +1,4 @@
-name: Build Churn Prediction App
+name: Churn Prediction App
 
 on:
   push:
