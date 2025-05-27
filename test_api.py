@@ -16,6 +16,7 @@ def test_predict():
         "IsActiveMember": 1,
         "EstimatedSalary": 50000.0
     }
-    response = client.post("/predict", json=sample_input)
+    response = client.get("/predict", params=sample_input)
     assert response.status_code == 200
     assert "churn_prediction" in response.json()
+
