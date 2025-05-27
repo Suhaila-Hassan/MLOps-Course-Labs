@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
-from pydantic import BaseModel
 import numpy as np
 import pickle
 import logging
@@ -34,19 +33,6 @@ num_cols = ["CreditScore", "Age", "Tenure", "Balance",
 app = FastAPI()
 Instrumentator().instrument(app).expose(app)
 
-# Defines a location in dictionary for user input
-class CustomerData(BaseModel):
-    CreditScore: float
-    Geography: str
-    Gender: str
-    Age: int
-    Tenure: int
-    Balance: float
-    NumOfProducts: int
-    HasCrCard: int
-    IsActiveMember: int
-    EstimatedSalary: float
-
 @app.get("/")
 def home():
     logger.info("Home endpoint accessed")
@@ -57,11 +43,35 @@ def health():
     logger.info("System Healthy")
     return {"status": "ok"}
 
-@app.post("/predict")
-def predict(data: CustomerData):
-    logger.info(f"Received request: {data}")
+@app.get("/predict")
+def predict(
+    CreditScore: float,
+    Geography: str,
+    Gender: str,
+    Age: int,
+    Tenure: int,
+    Balance: float,
+    NumOfProducts: int,
+    HasCrCard: int,
+    IsActiveMember: int,
+    EstimatedSalary: float
+):
+    logger.info("Received GET request for prediction")
     try:
-        input_df = pd.DataFrame([data.dict()])
+        input_data = {
+            "CreditScore": CreditScore,
+            "Geography": Geography,
+            "Gender": Gender,
+            "Age": Age,
+            "Tenure": Tenure,
+            "Balance": Balance,
+            "NumOfProducts": NumOfProducts,
+            "HasCrCard": HasCrCard,
+            "IsActiveMember": IsActiveMember,
+            "EstimatedSalary": EstimatedSalary
+        }
+
+        input_df = pd.DataFrame([input_data])
         logger.info(f"Input DataFrame:\n{input_df}")
 
         transformed_input = column_transformer.transform(input_df)
@@ -73,6 +83,10 @@ def predict(data: CustomerData):
     except Exception as e:
         logger.error(f"Prediction failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
