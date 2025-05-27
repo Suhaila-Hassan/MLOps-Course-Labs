@@ -1,0 +1,59 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "FastAPI Monitoring Dashboard",
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "stat",
+        "title": "Total Requests",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "sum(http_requests_total)",
+            "format": "time_series"
+          }
+        ],
+        "gridPos": { "x": 0, "y": 0, "w": 6, "h": 4 }
+      },
+      {
+        "type": "graph",
+        "title": "Requests Over Time",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total[1m])",
+            "legendFormat": "{{path}}"
+          }
+        ],
+        "gridPos": { "x": 6, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "stat",
+        "title": "Avg Prediction Latency (s)",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(http_request_duration_seconds_sum{path=\"/predict\"}[1m]) / rate(http_request_duration_seconds_count{path=\"/predict\"}[1m])"
+          }
+        ],
+        "gridPos": { "x": 0, "y": 4, "w": 6, "h": 4 }
+      },
+      {
+        "type": "graph",
+        "title": "Latency Over Time",
+        "datasource": "Prometheus",
+        "targets": [
+          {
+            "expr": "rate(http_request_duration_seconds_sum[1m]) / rate(http_request_duration_seconds_count[1m])",
+            "legendFormat": "{{path}}"
+          }
+        ],
+        "gridPos": { "x": 6, "y": 8, "w": 12, "h": 8 }
+      }
+    ],
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "10s"
+  }
+}
